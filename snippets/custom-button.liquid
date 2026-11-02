@@ -1,0 +1,65 @@
+{% doc %}
+  Rounded "Apply" style button used on the trade page.
+
+  @param {string} label - Button text
+  @param {string} [url] - Link, goes to the application form by default
+  @param {string} [style] - 'dark' (default) or 'light'
+
+  @example
+  {% render 'custom-button', label: section.settings.button_label, url: section.settings.button_link %}
+{% enddoc %}
+
+{% if label != blank %}
+  <a href="{{ url | default: '#apply' }}" class="custom-button custom-button--{{ style | default: 'dark' }}">
+    {{ label }}
+  </a>
+{% endif %}
+
+{% stylesheet %}
+  .custom-button {
+    display: inline-block;
+    width: 411px;
+    max-width: 100%;
+    padding: 11px 32px;
+    border-radius: 32px;
+    font-family: var(--font-primary--family);
+    font-size: 24px;
+    line-height: 24px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .custom-button--dark {
+    background: #1a1a1a;
+    color: #fff;
+  }
+
+  .custom-button--dark:hover {
+    background: #3d12f5;
+  }
+
+  .custom-button--light {
+    background: #fff;
+    color: #1a1a1a;
+  }
+
+  .custom-button--light:hover {
+    background: #1a1a1a;
+    color: #fff;
+  }
+
+  @media (max-width: 749px) {
+    .custom-button {
+      width: 100%;
+      padding: 14px 32px;
+      font-size: 15px;
+      line-height: 15px;
+    }
+
+    .custom-button--light {
+      font-size: 16px;
+      line-height: 16px;
+    }
+  }
+{% endstylesheet %}

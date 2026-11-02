@@ -1,0 +1,615 @@
+{%- assign business_types = section.settings.business_types | split: ',' -%}
+
+<div class="custom-apply full-width" id="apply">
+  <div class="custom-apply__inner">
+    <div class="custom-apply__intro">
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.description }}</p>
+    </div>
+
+    <div class="custom-apply__card">
+      {% form 'contact', class: 'custom-apply__form' %}
+        <input type="hidden" name="contact[form]" value="{{ 'custom_form.form_name' | t }}">
+
+        <ol class="custom-apply__tabs">
+          <li class="{% if form.posted_successfully? %}is-done{% else %}is-active{% endif %}">
+            <span class="long">01 {{ 'custom_form.tab_1' | t }}</span>
+            <span class="short">01 {{ 'custom_form.tab_short_1' | t }}</span>
+          </li>
+          <li class="{% if form.posted_successfully? %}is-done{% endif %}">
+            <span class="long">02 {{ 'custom_form.tab_2' | t }}</span>
+            <span class="short">02 {{ 'custom_form.tab_short_2' | t }}</span>
+          </li>
+          <li class="{% if form.posted_successfully? %}is-done{% endif %}">
+            <span class="long">03 {{ 'custom_form.tab_3' | t }}</span>
+            <span class="short">03 {{ 'custom_form.tab_short_3' | t }}</span>
+          </li>
+        </ol>
+
+        {% if form.posted_successfully? %}
+          <div class="custom-apply__success">
+            <span class="custom-apply__success-icon">{{ 'icon-check-circle.svg' | inline_asset_content }}</span>
+            <p>{{ section.settings.success_heading }}</p>
+          </div>
+        {% else %}
+          {% if form.errors %}
+            <div class="custom-apply__errors">{{ form.errors | default_errors }}</div>
+          {% endif %}
+
+          {% comment %} Step 1 {% endcomment %}
+          <div class="custom-apply__step" data-step="1">
+            <div class="custom-apply__fields">
+              <div class="custom-apply__row">
+                <div class="custom-apply__field">
+                  <label for="apply-first-name">{{ 'custom_form.first_name' | t }}</label>
+                  <input type="text" id="apply-first-name" name="contact[first_name]" placeholder="{{ 'custom_form.first_name_placeholder' | t }}" required>
+                </div>
+                <div class="custom-apply__field">
+                  <label for="apply-last-name">{{ 'custom_form.last_name' | t }}</label>
+                  <input type="text" id="apply-last-name" name="contact[last_name]" placeholder="{{ 'custom_form.last_name_placeholder' | t }}" required>
+                </div>
+              </div>
+              <div class="custom-apply__field">
+                <label for="apply-email">{{ 'custom_form.email' | t }}</label>
+                <input type="email" id="apply-email" name="contact[email]" placeholder="{{ 'custom_form.email_placeholder' | t }}" required>
+              </div>
+              <div class="custom-apply__field">
+                <label for="apply-phone">{{ 'custom_form.phone' | t }}</label>
+                <input type="tel" id="apply-phone" name="contact[phone]" placeholder="{{ 'custom_form.phone_placeholder' | t }}" required>
+              </div>
+            </div>
+
+            <div class="custom-apply__footer">
+              <p>{{ 'custom_form.step_of' | t: current: 1, total: 3 }}</p>
+              <div class="custom-apply__actions">
+                <button type="button" class="custom-apply__button" data-next>{{ 'custom_form.continue' | t }}</button>
+              </div>
+            </div>
+          </div>
+
+          {% comment %} Step 2 {% endcomment %}
+          <div class="custom-apply__step" data-step="2" hidden>
+            <div class="custom-apply__fields">
+              <div class="custom-apply__field">
+                <label for="apply-business-name">{{ 'custom_form.business_name' | t }}</label>
+                <input type="text" id="apply-business-name" name="contact[business_name]" placeholder="{{ 'custom_form.business_name_placeholder' | t }}" required>
+              </div>
+              <div class="custom-apply__field">
+                <label for="apply-business-type">{{ 'custom_form.business_type' | t }}</label>
+                <div class="custom-apply__select">
+                  <select id="apply-business-type" name="contact[business_type]" required>
+                    <option value="">{{ 'custom_form.business_type_placeholder' | t }}</option>
+                    {% for type in business_types %}
+                      <option value="{{ type | strip }}">{{ type | strip }}</option>
+                    {% endfor %}
+                  </select>
+                  {{ 'icon-chevron-down.svg' | inline_asset_content }}
+                </div>
+              </div>
+              <div class="custom-apply__field">
+                <label for="apply-source">{{ 'custom_form.source' | t }}</label>
+                <input type="text" id="apply-source" name="contact[heard_about_us]" placeholder="{{ 'custom_form.source_placeholder' | t }}" required>
+              </div>
+            </div>
+
+            <div class="custom-apply__footer">
+              <p>{{ 'custom_form.step_of' | t: current: 2, total: 3 }}</p>
+              <div class="custom-apply__actions">
+                <button type="button" class="custom-apply__back" data-back>{{ 'custom_form.back' | t }}</button>
+                <button type="button" class="custom-apply__button" data-next>{{ 'custom_form.continue' | t }}</button>
+              </div>
+            </div>
+          </div>
+
+          {% comment %} Step 3 {% endcomment %}
+          <div class="custom-apply__step" data-step="3" hidden>
+            <div class="custom-apply__confirm">
+              <p class="custom-apply__confirm-title">{{ section.settings.confirm_heading }}</p>
+              <p class="custom-apply__confirm-text">{{ section.settings.confirm_text }}</p>
+              <button type="submit" class="custom-apply__button custom-apply__submit">{{ section.settings.submit_label }}</button>
+            </div>
+
+            <div class="custom-apply__footer">
+              <p>{{ 'custom_form.step_of' | t: current: 3, total: 3 }}</p>
+              <div class="custom-apply__actions">
+                <button type="button" class="custom-apply__back" data-back>{{ 'custom_form.back' | t }}</button>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endform %}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .custom-apply {
+    padding: 80px;
+    background: #fff;
+    color: #1a1a1a;
+    font-family: var(--font-primary--family);
+  }
+
+  .custom-apply__inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 48px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .custom-apply__intro {
+    width: 489px;
+    flex-shrink: 0;
+  }
+
+  .custom-apply__intro h2 {
+    margin: 0 0 16px;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: -0.8px;
+  }
+
+  .custom-apply__intro p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.8;
+  }
+
+  .custom-apply__card {
+    flex: 1;
+    background: #fdfdfd;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 18px 40px rgba(0, 0, 0, 0.06);
+  }
+
+  .custom-apply__form {
+    min-height: 498px;
+    padding: 40px;
+  }
+
+  /* Step tabs */
+  .custom-apply__tabs {
+    display: flex;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .custom-apply__tabs li {
+    flex: 1;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #f1f1f1;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .custom-apply__tabs li.is-active,
+  .custom-apply__tabs li.is-done {
+    border-color: #1a1a1a;
+  }
+
+  .custom-apply__tabs li.is-done span::before {
+    content: '\2713';
+    margin-right: 6px;
+  }
+
+  .custom-apply__tabs .short {
+    display: none;
+  }
+
+  /* Steps */
+  .custom-apply__step {
+    display: flex;
+    flex-direction: column;
+    min-height: 394px;
+  }
+
+  .custom-apply__step[hidden] {
+    display: none;
+  }
+
+  .custom-apply__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-top: 36px;
+  }
+
+  .custom-apply__step[data-step='2'] .custom-apply__fields {
+    gap: 20px;
+  }
+
+  .custom-apply__row {
+    display: flex;
+    gap: 16px;
+  }
+
+  .custom-apply__row .custom-apply__field {
+    flex: 1;
+  }
+
+  .custom-apply__field label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 12px;
+  }
+
+  .custom-apply__field input,
+  .custom-apply__field select {
+    width: 100%;
+    height: 47px;
+    padding: 12px 16px;
+    border: 1px solid transparent;
+    border-radius: 0;
+    background: #f1f1f1;
+    color: #1a1a1a;
+    font-family: inherit;
+    font-size: 12px;
+    outline: none;
+    appearance: none;
+  }
+
+  .custom-apply__field input:focus,
+  .custom-apply__field select:focus {
+    border-color: #1a1a1a;
+  }
+
+  .custom-apply__field input::placeholder {
+    color: rgba(26, 26, 26, 0.5);
+  }
+
+  .custom-apply__select {
+    position: relative;
+  }
+
+  .custom-apply__select svg {
+    position: absolute;
+    top: 18px;
+    right: 16px;
+    width: 12px;
+    height: 12px;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .custom-apply__confirm {
+    padding: 68px 0 16px;
+    text-align: center;
+  }
+
+  .custom-apply__confirm-title,
+  .custom-apply__success p {
+    margin: 0;
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .custom-apply__confirm-text {
+    max-width: 480px;
+    margin: 12px auto 24px;
+    font-size: 14px;
+    line-height: 22px;
+    opacity: 0.8;
+  }
+
+  .custom-apply__success {
+    padding-top: 100px;
+    text-align: center;
+  }
+
+  .custom-apply__success-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 12px;
+    border-radius: 50%;
+    background: rgba(61, 18, 245, 0.05);
+  }
+
+  .custom-apply__errors {
+    margin-top: 24px;
+    color: #b42318;
+    font-size: 12px;
+  }
+
+  .custom-apply__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 24px;
+  }
+
+  .custom-apply__footer p {
+    margin: 0;
+    font-size: 14px;
+  }
+
+  .custom-apply__actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .custom-apply__back {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: rgba(26, 26, 26, 0.8);
+    font-family: inherit;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .custom-apply__button {
+    width: 224px;
+    padding: 11px 28px;
+    border: 0;
+    border-radius: 32px;
+    background: #1a1a1a;
+    color: #fff;
+    font-family: inherit;
+    font-size: 24px;
+    line-height: 24px;
+    cursor: pointer;
+  }
+
+  .custom-apply__button:hover {
+    background: #3d12f5;
+  }
+
+  .custom-apply__submit {
+    width: 347px;
+    padding: 12px 32px;
+  }
+
+  @media (max-width: 989px) {
+    .custom-apply {
+      padding: 64px 40px;
+    }
+
+    .custom-apply__inner {
+      flex-direction: column;
+    }
+
+    .custom-apply__intro,
+    .custom-apply__card {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 749px) {
+    .custom-apply {
+      padding: 48px 24px;
+    }
+
+    .custom-apply__inner {
+      gap: 24px;
+    }
+
+    .custom-apply__intro h2 {
+      margin-bottom: 8px;
+      font-size: 28px;
+      line-height: 28px;
+      letter-spacing: 0;
+    }
+
+    .custom-apply__intro p {
+      color: #5d5d5d;
+      font-size: 13px;
+      line-height: 1.4;
+      opacity: 1;
+    }
+
+    .custom-apply__card {
+      background: #fff;
+    }
+
+    .custom-apply__form {
+      min-height: 0;
+      padding: 20px;
+    }
+
+    .custom-apply__tabs li {
+      padding-bottom: 4px;
+      border-bottom-width: 4px;
+      border-color: #e5e7eb;
+      color: rgba(93, 93, 93, 0.6);
+      font-size: 11px;
+    }
+
+    .custom-apply__tabs li.is-active,
+    .custom-apply__tabs li.is-done {
+      color: #1a1a1a;
+    }
+
+    .custom-apply__tabs .long {
+      display: none;
+    }
+
+    .custom-apply__tabs .short {
+      display: inline;
+    }
+
+    .custom-apply__step {
+      min-height: 0;
+    }
+
+    .custom-apply__fields {
+      gap: 20px;
+      padding-top: 20px;
+    }
+
+    .custom-apply__step[data-step='2'] .custom-apply__fields {
+      gap: 16px;
+    }
+
+    .custom-apply__row {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .custom-apply__field label {
+      margin-bottom: 6px;
+    }
+
+    .custom-apply__field input,
+    .custom-apply__field select {
+      height: 40px;
+      font-size: 13px;
+    }
+
+    .custom-apply__step[data-step='2'] input,
+    .custom-apply__step[data-step='2'] select {
+      height: 47px;
+    }
+
+    .custom-apply__select svg {
+      top: 17px;
+    }
+
+    .custom-apply__confirm {
+      padding-top: 32px;
+    }
+
+    .custom-apply__confirm-title,
+    .custom-apply__success p {
+      font-size: 20px;
+      line-height: 28px;
+    }
+
+    .custom-apply__confirm-text {
+      font-size: 13px;
+      line-height: 20px;
+    }
+
+    .custom-apply__success {
+      padding: 40px 0 16px;
+    }
+
+    .custom-apply__footer {
+      padding-top: 28px;
+    }
+
+    .custom-apply__footer p {
+      font-size: 12px;
+    }
+
+    .custom-apply__actions {
+      gap: 16px;
+    }
+
+    .custom-apply__back {
+      color: #1a1a1a;
+      font-size: 14px;
+    }
+
+    .custom-apply__button {
+      width: auto;
+      padding: 12px 24px;
+      border-radius: 24px;
+      font-size: 16px;
+      line-height: 16px;
+    }
+
+    .custom-apply__submit {
+      width: 100%;
+    }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  document.querySelectorAll('.custom-apply__form').forEach(function (form) {
+    var steps = form.querySelectorAll('.custom-apply__step');
+    var tabs = form.querySelectorAll('.custom-apply__tabs li');
+    var current = 0;
+
+    function goToStep(index) {
+      steps[current].hidden = true;
+      current = index;
+      steps[current].hidden = false;
+
+      tabs.forEach(function (tab, i) {
+        tab.classList.toggle('is-active', i === current);
+        tab.classList.toggle('is-done', i < current);
+      });
+    }
+
+    form.querySelectorAll('[data-next]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        var fields = steps[current].querySelectorAll('input, select');
+        for (var i = 0; i < fields.length; i++) {
+          if (!fields[i].reportValidity()) return;
+        }
+        goToStep(current + 1);
+      });
+    });
+
+    form.querySelectorAll('[data-back]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        goToStep(current - 1);
+      });
+    });
+  });
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "t:general.custom_application_form",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:labels.heading",
+      "default": "Submit your application"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "t:labels.description",
+      "default": "Register to join over 2,000 design professionals already on the program. Approved accounts gain wholesale platform access in under three business days."
+    },
+    {
+      "type": "text",
+      "id": "business_types",
+      "label": "t:labels.business_types",
+      "info": "t:info.comma_separated",
+      "default": "Interior designer, Architect, Developer, Retailer or showroom, Hospitality or commercial, Other"
+    },
+    {
+      "type": "text",
+      "id": "confirm_heading",
+      "label": "t:labels.confirm_heading",
+      "default": "You're all set!"
+    },
+    {
+      "type": "textarea",
+      "id": "confirm_text",
+      "label": "t:labels.confirm_text",
+      "default": "Review your details and submit your application to join the Ozarke Trade Program."
+    },
+    {
+      "type": "text",
+      "id": "submit_label",
+      "label": "t:labels.submit_label",
+      "default": "Submit Application"
+    },
+    {
+      "type": "text",
+      "id": "success_heading",
+      "label": "t:labels.success_heading",
+      "default": "Your Submission is successful!"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:general.custom_application_form"
+    }
+  ]
+}
+{% endschema %}

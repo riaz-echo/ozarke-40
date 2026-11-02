@@ -1,0 +1,334 @@
+<div class="custom-hero full-width">
+  <div class="custom-hero__media">
+    {% if section.settings.image %}
+      {{
+        section.settings.image
+        | image_url: width: 2800
+        | image_tag: loading: 'eager', sizes: '100vw', widths: '750, 1500, 2100, 2800'
+      }}
+    {% else %}
+      {{ 'lifestyle-1' | placeholder_svg_tag }}
+    {% endif %}
+    <div class="custom-hero__overlay" style="opacity: {{ section.settings.overlay_opacity }}%;"></div>
+  </div>
+
+  <div class="custom-hero__inner">
+    <div class="custom-hero__content">
+      <h1 class="custom-hero__heading">{{ section.settings.heading }}</h1>
+      <p class="custom-hero__description">{{ section.settings.description }}</p>
+
+      {% if section.settings.button_label != blank %}
+        <a href="{{ section.settings.button_link | default: '#apply' }}" class="custom-hero__button">
+          {{ section.settings.button_label }}
+        </a>
+      {% endif %}
+    </div>
+
+    {% if section.blocks.size > 0 %}
+      <ul class="custom-hero__trust">
+        {% for block in section.blocks %}
+          <li {{ block.shopify_attributes }}>
+            {% if block.settings.icon != 'none' %}
+              {% case block.settings.icon %}
+                {% when 'box' %}
+                  {{ 'icon-box.svg' | inline_asset_content }}
+                {% when 'truck' %}
+                  {{ 'icon-truck.svg' | inline_asset_content }}
+                {% when 'clock' %}
+                  {{ 'icon-clock.svg' | inline_asset_content }}
+              {% endcase %}
+            {% endif %}
+            {{ block.settings.text }}
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  #shopify-section-{{ section.id }} .custom-hero {
+    min-height: {{ section.settings.min_height }}px;
+  }
+
+  @media (max-width: 749px) {
+    #shopify-section-{{ section.id }} .custom-hero {
+      min-height: {{ section.settings.min_height_mobile }}px;
+    }
+  }
+</style>
+
+{% stylesheet %}
+  .custom-hero {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    background: #1a1a1a;
+    color: #fff;
+    font-family: var(--font-primary--family);
+  }
+
+  .custom-hero__media {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .custom-hero__media img,
+  .custom-hero__media svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .custom-hero__media svg {
+    fill: rgba(255, 255, 255, 0.15);
+  }
+
+  .custom-hero__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 13%, #000 54%);
+  }
+
+  .custom-hero__inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 120px 80px 60px;
+    font-family: Riforma LL, var(--font-primary--family);
+  }
+
+  .custom-hero__content {
+    max-width: 720px;
+  }
+
+  .custom-hero__heading {
+    margin: 0;
+    font-size: 80px;
+    font-weight: 400;
+    line-height: 1.1;
+    white-space: nowrap;
+  }
+
+  .custom-hero__description {
+    margin: 12px 0 24px;
+    color: #e5e2dc;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .custom-hero__button {
+    display: block;
+    max-width: 680px;
+    padding: 18px 48px;
+    border: 1px solid #1a1a1a;
+    border-radius: 32px;
+    background: #fff;
+    color: #202020;
+    font-size: 24px;
+    line-height: 24px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .custom-hero__button:hover {
+    border-color: #fff;
+    background: transparent;
+    color: #fff;
+  }
+
+  .custom-hero__trust {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 48px;
+    margin: 40px 0 0;
+    padding: 32px 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    list-style: none;
+  }
+
+  .custom-hero__trust li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+  }
+
+  .custom-hero__trust svg {
+    width: 20px;
+    height: 18px;
+  }
+
+  @media (max-width: 989px) {
+    .custom-hero__inner {
+      padding: 120px 40px 60px;
+    }
+
+    .custom-hero__heading {
+      font-size: 56px;
+      white-space: normal;
+    }
+  }
+
+  @media (max-width: 749px) {
+    .custom-hero__overlay {
+      background: linear-gradient(to bottom, transparent 7%, #000 54%);
+    }
+
+    .custom-hero__inner {
+      padding: 120px 24px 60px;
+    }
+
+    .custom-hero__heading {
+      font-size: 32px;
+      line-height: 1;
+      letter-spacing: 0.5px;
+    }
+
+    .custom-hero__description {
+      margin: 8px 0 16px;
+      color: #fff;
+      font-size: 14px;
+      line-height: 18px;
+    }
+
+    .custom-hero__button {
+      padding: 14px 24px;
+      border-radius: 30px;
+      color: #111;
+      font-size: 16px;
+      line-height: 16px;
+    }
+
+    .custom-hero__trust {
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 24px;
+      padding: 12px 0;
+    }
+
+    .custom-hero__trust li {
+      gap: 4px;
+      font-size: 12px;
+    }
+
+    .custom-hero__trust svg {
+      width: 14px;
+      height: 12px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:general.custom_hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:labels.image"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "t:labels.overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 55
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:labels.heading",
+      "default": "The Trade Program"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "t:labels.description",
+      "default": "Furniture, lighting and hardware at exclusive pricing, with a dedicated contact from quote to delivery. Built for interior designers, architects and design professionals."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:labels.button_label",
+      "default": "Apply for Trade Pricing"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:labels.button_link"
+    },
+    {
+      "type": "range",
+      "id": "min_height",
+      "label": "t:labels.min_height",
+      "min": 400,
+      "max": 1000,
+      "step": 8,
+      "unit": "px",
+      "default": 776
+    },
+    {
+      "type": "range",
+      "id": "min_height_mobile",
+      "label": "t:labels.min_height_mobile",
+      "min": 320,
+      "max": 800,
+      "step": 8,
+      "unit": "px",
+      "default": 480
+    }
+  ],
+  "blocks": [
+    {
+      "type": "trust_item",
+      "name": "t:general.trust_item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "t:labels.icon",
+          "options": [
+            { "value": "box", "label": "t:options.icon.box" },
+            { "value": "truck", "label": "t:options.icon.truck" },
+            { "value": "clock", "label": "t:options.icon.clock" },
+            { "value": "none", "label": "t:options.icon.none" }
+          ],
+          "default": "box"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "t:labels.text",
+          "default": "No minimum order"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "t:general.custom_hero",
+      "blocks": [
+        { "type": "trust_item", "settings": { "icon": "box", "text": "No minimum order" } },
+        { "type": "trust_item", "settings": { "icon": "truck", "text": "Free shipping" } },
+        { "type": "trust_item", "settings": { "icon": "clock", "text": "Approved within 3 business days" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

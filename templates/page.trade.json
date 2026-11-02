@@ -1,0 +1,313 @@
+{
+  "sections": {
+    "hero": {
+      "type": "custom-hero",
+      "blocks": {
+        "trust_1": { "type": "trust_item", "settings": { "icon": "box", "text": "No minimum order" } },
+        "trust_2": { "type": "trust_item", "settings": { "icon": "truck", "text": "Free shipping" } },
+        "trust_3": { "type": "trust_item", "settings": { "icon": "clock", "text": "Approved within 3 business days" } }
+      },
+      "block_order": ["trust_1", "trust_2", "trust_3"],
+      "settings": {}
+    },
+    "logo_strip": {
+      "type": "custom-logo-strip",
+      "blocks": {
+        "logo_1": { "type": "logo", "settings": {} },
+        "logo_2": { "type": "logo", "settings": {} },
+        "logo_3": { "type": "logo", "settings": {} },
+        "logo_4": { "type": "logo", "settings": {} },
+        "logo_5": { "type": "logo", "settings": {} },
+        "logo_6": { "type": "logo", "settings": {} },
+        "logo_7": { "type": "logo", "settings": {} },
+        "logo_8": { "type": "logo", "settings": {} },
+        "logo_9": { "type": "logo", "settings": { "faded": true } }
+      },
+      "block_order": ["logo_1", "logo_2", "logo_3", "logo_4", "logo_5", "logo_6", "logo_7", "logo_8", "logo_9"],
+      "settings": {}
+    },
+    "personas": {
+      "type": "custom-personas",
+      "blocks": {
+        "persona_1": {
+          "type": "persona",
+          "settings": {
+            "title": "Interior Designers",
+            "text": "Comprehensive trade discounts with zero minimums on bespoke furniture."
+          }
+        },
+        "persona_2": {
+          "type": "persona",
+          "settings": {
+            "title": "Architects & Developers",
+            "text": "Sourcing files, certified hardware and volume support for contract specs."
+          }
+        },
+        "persona_3": {
+          "type": "persona",
+          "settings": {
+            "title": "Retailers & Showrooms",
+            "text": "Curation catalogs and priority manufacturing slots for showroom floor partners."
+          }
+        },
+        "persona_4": {
+          "type": "persona",
+          "settings": {
+            "title": "Hospitality & Commercial",
+            "text": "Highly durable materials engineered for scale, hotel fitouts and restaurants."
+          }
+        }
+      },
+      "block_order": ["persona_1", "persona_2", "persona_3", "persona_4"],
+      "settings": {}
+    },
+    "features": {
+      "type": "custom-features",
+      "blocks": {
+        "feature_1": {
+          "type": "feature",
+          "settings": {
+            "title": "A wide lighting assortment",
+            "text": "Source statement pieces, architectural lighting, decorative fixtures, and complementary products within one destination."
+          }
+        },
+        "feature_2": {
+          "type": "feature",
+          "settings": {
+            "title": "Solutions across project types",
+            "text": "Lighting for residential, hospitality, commercial, and development projects."
+          }
+        },
+        "feature_3": {
+          "type": "feature",
+          "settings": {
+            "title": "Trade support when you need it",
+            "text": "Get help with product questions, larger orders, availability, and purchasing."
+          }
+        },
+        "feature_4": {
+          "type": "feature",
+          "settings": {
+            "title": "Project-friendly purchasing",
+            "text": "Trade pricing, free shipping, and eligible tax exemptions help simplify project budgets."
+          }
+        },
+        "feature_5": {
+          "type": "feature",
+          "settings": {
+            "title": "One account. Ongoing access.",
+            "text": "Once approved, professionals can return to Ozarké for future projects without reapplying."
+          }
+        }
+      },
+      "block_order": ["feature_1", "feature_2", "feature_3", "feature_4", "feature_5"],
+      "settings": {}
+    },
+    "tiers": {
+      "type": "custom-tiers",
+      "blocks": {
+        "tier_1": {
+          "type": "tier",
+          "settings": {
+            "name": "Bronze",
+            "discount": "15% OFF",
+            "spend": "Annual spend under £2,000",
+            "text": "Trade pricing across the full catalogue. Free shipping. Early access to new arrivals."
+          }
+        },
+        "tier_2": {
+          "type": "tier",
+          "settings": {
+            "name": "Silver",
+            "discount": "25% OFF",
+            "spend": "Annual spend £2,000-£5,000",
+            "text": "Everything in Bronze, plus priority processing and discounted physical samples for clients."
+          }
+        },
+        "tier_3": {
+          "type": "tier",
+          "settings": {
+            "name": "Gold",
+            "discount": "35% OFF",
+            "spend": "Annual spend over £5,000",
+            "text": "Everything in Silver, plus a named account manager, early access to limited editions, and concierge ordering support.",
+            "highlight": true,
+            "tag": "Premium"
+          }
+        }
+      },
+      "block_order": ["tier_1", "tier_2", "tier_3"],
+      "settings": {}
+    },
+    "slideshow": {
+      "type": "custom-slideshow",
+      "blocks": {
+        "slide_1": { "type": "slide", "settings": { "text": "Considered pieces, built for projects that need to last.*" } },
+        "slide_2": { "type": "slide", "settings": { "text": "Considered pieces, built for projects that need to last.*" } },
+        "slide_3": { "type": "slide", "settings": { "text": "Considered pieces, built for projects that need to last.*" } },
+        "slide_4": { "type": "slide", "settings": { "text": "Considered pieces, built for projects that need to last.*" } },
+        "slide_5": { "type": "slide", "settings": { "text": "Considered pieces, built for projects that need to last.*" } }
+      },
+      "block_order": ["slide_1", "slide_2", "slide_3", "slide_4", "slide_5"],
+      "settings": {}
+    },
+    "benefits": {
+      "type": "custom-benefits",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "tag",
+            "title": "Exclusive trade pricing",
+            "text": "Up to 35% discount based on tier structure, applied directly at checkout online or via quote."
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "user",
+            "title": "A named contact",
+            "text": "Personalized service with direct phone and email access to resolve custom specifications."
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "truck",
+            "title": "Free shipping",
+            "text": "No delivery charges on standard orders. Coordinated shipping of bulk orders."
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "icon": "clock",
+            "title": "Priority processing",
+            "text": "Your orders enter production and shipping queue with elevated priority to meet install targets."
+          }
+        },
+        "benefit_5": {
+          "type": "benefit",
+          "settings": {
+            "icon": "star",
+            "title": "Early access",
+            "text": "Preview and order from new seasonal collections before they launch to the general public."
+          }
+        },
+        "benefit_6": {
+          "type": "benefit",
+          "settings": {
+            "icon": "percent",
+            "title": "Zero sales tax",
+            "text": "Seamless VAT/sales tax exemption integration for eligible companies and physical stores."
+          }
+        }
+      },
+      "block_order": ["benefit_1", "benefit_2", "benefit_3", "benefit_4", "benefit_5", "benefit_6"],
+      "settings": {}
+    },
+    "steps": {
+      "type": "custom-steps",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "Apply",
+            "text": "Tell us about your business. Takes under two minutes, no documents required*."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Reviewed",
+            "text": "A member of our trade team reviews your application personally."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Approved",
+            "text": "You'll hear back within 3 business days*, with your account and pricing ready to go."
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "title": "Order",
+            "text": "Order through your account, or work directly with your named contact."
+          }
+        }
+      },
+      "block_order": ["step_1", "step_2", "step_3", "step_4"],
+      "settings": {}
+    },
+    "testimonials": {
+      "type": "custom-testimonials",
+      "blocks": {
+        "testimonial_1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Ozarke's trade pricing and turnaround have made them our first call for every project.",
+            "name": "Alistair Vance",
+            "company": "Vance & Partners · London"
+          }
+        },
+        "testimonial_2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The team treats every order like it's the only one they're working on. That's rare.",
+            "name": "Elena Rostova",
+            "company": "Studio Rostova · Edinburgh"
+          }
+        },
+        "testimonial_3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Well-made pieces, and someone who actually picks up the phone.",
+            "name": "Jonathan Miller",
+            "company": "Miller & Co. · Bath"
+          }
+        }
+      },
+      "block_order": ["testimonial_1", "testimonial_2", "testimonial_3"],
+      "settings": {}
+    },
+    "application_form": {
+      "type": "custom-application-form",
+      "settings": {}
+    },
+    "faq": {
+      "type": "custom-faq",
+      "blocks": {
+        "faq_1": { "type": "question", "settings": { "question": "Do I need to provide business documents to apply?", "answer": "" } },
+        "faq_2": { "type": "question", "settings": { "question": "Is there a minimum order value?", "answer": "" } },
+        "faq_3": { "type": "question", "settings": { "question": "How do the membership tiers work?" } },
+        "faq_4": { "type": "question", "settings": { "question": "How long does approval take?", "answer": "" } },
+        "faq_5": { "type": "question", "settings": { "question": "Can I get samples or spec sheets?", "answer": "" } },
+        "faq_6": { "type": "question", "settings": { "question": "What's your returns policy for trade orders?", "answer": "" } },
+        "faq_7": { "type": "question", "settings": { "question": "Do you ship outside the UK?", "answer": "" } },
+        "faq_8": { "type": "question", "settings": { "question": "Can I use trade pricing for personal projects?", "answer": "" } }
+      },
+      "block_order": ["faq_1", "faq_2", "faq_3", "faq_4", "faq_5", "faq_6", "faq_7", "faq_8"],
+      "settings": {}
+    },
+    "cta_banner": {
+      "type": "custom-cta-banner",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "logo_strip",
+    "personas",
+    "features",
+    "tiers",
+    "slideshow",
+    "benefits",
+    "steps",
+    "testimonials",
+    "application_form",
+    "faq",
+    "cta_banner"
+  ]
+}

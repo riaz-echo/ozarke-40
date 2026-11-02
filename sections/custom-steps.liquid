@@ -1,0 +1,220 @@
+<div class="custom-steps full-width">
+  <div class="custom-steps__inner">
+    <h2>{{ section.settings.heading }}</h2>
+
+    <div class="custom-steps__list">
+      {% for block in section.blocks %}
+        <div class="custom-steps__item" {{ block.shopify_attributes }}>
+          <div class="custom-steps__top">
+            <span class="custom-steps__number">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+            <h3>{{ block.settings.title }}</h3>
+          </div>
+          <p>{{ block.settings.text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .custom-steps {
+    margin-top: 120px;
+    padding: 80px;
+    background: #fff;
+    color: #1a1a1a;
+    font-family: var(--font-primary--family);
+  }
+
+  .custom-steps__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .custom-steps h2 {
+    margin: 0 0 76px;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 46px;
+    text-align: center;
+  }
+
+  .custom-steps__list {
+    display: flex;
+  }
+
+  .custom-steps__item {
+    flex: 1;
+    min-height: 191px;
+  }
+
+  .custom-steps__item + .custom-steps__item {
+    margin-left: 40px;
+    padding-left: 40px;
+    border-left: 1px solid #dfdfdf;
+  }
+
+  .custom-steps__number {
+    display: block;
+    color: #3d12f5;
+    font-size: 70px;
+    line-height: 70px;
+  }
+
+  .custom-steps h3 {
+    margin: 20px 0;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 18px;
+  }
+
+  .custom-steps p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 989px) {
+    .custom-steps {
+      padding: 64px 40px;
+    }
+
+    .custom-steps__list {
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .custom-steps__item {
+      flex: 0 0 calc(50% - 20px);
+    }
+
+    .custom-steps__item + .custom-steps__item {
+      margin-left: 0;
+      padding-left: 0;
+      border-left: 0;
+    }
+  }
+
+  @media (max-width: 749px) {
+    .custom-steps {
+      margin-top: 0;
+      padding: 48px 24px;
+    }
+
+    .custom-steps h2 {
+      margin-bottom: 32px;
+      font-size: 28px;
+      line-height: 28px;
+      text-align: left;
+    }
+
+    .custom-steps__list {
+      display: block;
+    }
+
+    .custom-steps__item {
+      min-height: 0;
+      padding-bottom: 20px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #dfdfdf;
+    }
+
+    .custom-steps__item:last-child {
+      padding-bottom: 0;
+      margin-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .custom-steps__top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .custom-steps__number {
+      font-size: 32px;
+      line-height: 32px;
+    }
+
+    .custom-steps h3 {
+      margin: 0;
+      font-size: 16px;
+      line-height: 16px;
+    }
+
+    .custom-steps p {
+      font-size: 13px;
+      line-height: 1.4;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:general.custom_steps",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:labels.heading",
+      "default": "Get Started in Four Simple Steps"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "t:general.step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:labels.title",
+          "default": "Apply"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "t:labels.text",
+          "default": "Tell us about your business. Takes under two minutes, no documents required*."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "t:general.custom_steps",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "title": "Apply",
+            "text": "Tell us about your business. Takes under two minutes, no documents required*."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Reviewed",
+            "text": "A member of our trade team reviews your application personally."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Approved",
+            "text": "You'll hear back within 3 business days*, with your account and pricing ready to go."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Order",
+            "text": "Order through your account, or work directly with your named contact."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

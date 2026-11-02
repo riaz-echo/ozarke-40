@@ -1,0 +1,266 @@
+<div class="custom-personas full-width">
+  <div class="custom-personas__inner">
+    <h2 class="custom-personas__heading">{{ section.settings.heading }}</h2>
+
+    <div class="custom-personas__grid">
+      {% for block in section.blocks %}
+        <div class="custom-personas__card" {{ block.shopify_attributes }}>
+          <div class="custom-personas__image">
+            {% if block.settings.image %}
+              {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy' }}
+            {% else %}
+              {{ 'image' | placeholder_svg_tag }}
+            {% endif %}
+          </div>
+
+          <div class="custom-personas__content">
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.text }}</p>
+
+            {% if block.settings.link_label != blank %}
+              <a href="{{ block.settings.link | default: '#apply' }}">
+                {{ block.settings.link_label }}
+                {{ 'icon-arrow-right.svg' | inline_asset_content }}
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .custom-personas {
+    margin-top: 120px;
+    padding: 0 80px;
+    font-family: var(--font-primary--family);
+  }
+
+  .custom-personas__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .custom-personas__heading {
+    margin: 0 0 32px;
+    color: #1a1a1a;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: -0.8px;
+    text-align: center;
+  }
+
+  .custom-personas__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+
+  .custom-personas__card {
+    min-height: 405px;
+    background: #fff;
+  }
+
+  .custom-personas__image {
+    height: 220px;
+    background: #e7e7e7;
+  }
+
+  .custom-personas__image img,
+  .custom-personas__image svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .custom-personas__image svg {
+    fill: #c9c9c9;
+  }
+
+  .custom-personas__content {
+    padding: 24px;
+  }
+
+  .custom-personas__content h3 {
+    margin: 0;
+    color: #141414;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 20px;
+  }
+
+  .custom-personas__content p {
+    margin: 16px 0;
+    color: #5d5d5d;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .custom-personas__content a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 8px;
+    color: #3d12f5;
+    font-size: 13px;
+    text-decoration: none;
+  }
+
+  .custom-personas__content a svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  @media (max-width: 989px) {
+    .custom-personas {
+      padding: 0 40px;
+    }
+
+    .custom-personas__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 749px) {
+    .custom-personas {
+      margin-top: 0;
+      padding: 48px 0 48px 16px;
+      background: #fafaf8;
+    }
+
+    .custom-personas__heading {
+      padding-right: 16px;
+      font-size: 28px;
+      line-height: 34px;
+      letter-spacing: 0;
+    }
+
+    .custom-personas__grid {
+      display: flex;
+      gap: 20px;
+      padding: 0 16px 20px 0;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+    }
+
+    .custom-personas__card {
+      flex: 0 0 252px;
+      min-height: 280px;
+      scroll-snap-align: start;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 18px 40px rgba(0, 0, 0, 0.06);
+    }
+
+    .custom-personas__image {
+      height: 120px;
+    }
+
+    .custom-personas__content {
+      padding: 20px;
+    }
+
+    .custom-personas__content h3 {
+      color: #1a1a1a;
+      font-size: 18px;
+      line-height: 18px;
+    }
+
+    .custom-personas__content p {
+      margin: 12px 0;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .custom-personas__content a {
+      gap: 6px;
+      padding-top: 4px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:general.custom_personas",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:labels.heading",
+      "default": "Who it's for"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "persona",
+      "name": "t:general.persona",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:labels.image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:labels.title",
+          "default": "Interior Designers"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "t:labels.text",
+          "default": "Comprehensive trade discounts with zero minimums on bespoke furniture."
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "t:labels.link_label",
+          "default": "Apply"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:labels.link"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "t:general.custom_personas",
+      "blocks": [
+        {
+          "type": "persona",
+          "settings": {
+            "title": "Interior Designers",
+            "text": "Comprehensive trade discounts with zero minimums on bespoke furniture."
+          }
+        },
+        {
+          "type": "persona",
+          "settings": {
+            "title": "Architects & Developers",
+            "text": "Sourcing files, certified hardware and volume support for contract specs."
+          }
+        },
+        {
+          "type": "persona",
+          "settings": {
+            "title": "Retailers & Showrooms",
+            "text": "Curation catalogs and priority manufacturing slots for showroom floor partners."
+          }
+        },
+        {
+          "type": "persona",
+          "settings": {
+            "title": "Hospitality & Commercial",
+            "text": "Highly durable materials engineered for scale, hotel fitouts and restaurants."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

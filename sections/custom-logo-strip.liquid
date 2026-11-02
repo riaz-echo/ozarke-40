@@ -1,0 +1,177 @@
+<div class="custom-logo-strip full-width">
+  {% if section.settings.text != blank %}
+    <div class="custom-logo-strip__bar">
+      <p>{{ section.settings.text }}</p>
+    </div>
+  {% endif %}
+
+  <div class="custom-logo-strip__logos">
+    <div class="custom-logo-strip__track" style="animation-duration: {{ section.settings.speed }}s;">
+      {% for block in section.blocks %}
+        <div class="custom-logo-strip__logo{% if block.settings.faded %} is-faded{% endif %}" {{ block.shopify_attributes }}>
+          {% if block.settings.image %}
+            {{ block.settings.image | image_url: width: 300 | image_tag: alt: block.settings.image.alt }}
+          {% else %}
+            {{ 'logo' | placeholder_svg_tag }}
+          {% endif %}
+        </div>
+      {% endfor %}
+
+      {% comment %} Same logos again so the scroll loops without a gap {% endcomment %}
+      {% for block in section.blocks %}
+        <div class="custom-logo-strip__logo{% if block.settings.faded %} is-faded{% endif %}" aria-hidden="true">
+          {% if block.settings.image %}
+            {{ block.settings.image | image_url: width: 300 | image_tag: alt: '' }}
+          {% else %}
+            {{ 'logo' | placeholder_svg_tag }}
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .custom-logo-strip {
+    font-family: var(--font-primary--family);
+  }
+
+  .custom-logo-strip__bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 64px;
+    padding: 0 24px;
+    background: #e7e7e7;
+    border-top: 1px solid #d5d5d5;
+    border-bottom: 1px solid #d5d5d5;
+  }
+
+  .custom-logo-strip__bar p {
+    margin: 0;
+    color: #141414;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .custom-logo-strip__logos {
+    padding: 24px 0;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .custom-logo-strip__track {
+    display: flex;
+    width: max-content;
+    animation: logo-marquee 30s linear infinite;
+  }
+
+  .custom-logo-strip__logos:hover .custom-logo-strip__track {
+    animation-play-state: paused;
+  }
+
+  .custom-logo-strip__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 156px;
+    height: 57px;
+    margin-right: 32px;
+  }
+
+  .custom-logo-strip__logo.is-faded {
+    opacity: 0.55;
+  }
+
+  .custom-logo-strip__logo img,
+  .custom-logo-strip__logo svg {
+    max-width: 130px;
+    max-height: 58px;
+    object-fit: contain;
+  }
+
+  .custom-logo-strip__logo svg {
+    fill: #c9c9c9;
+  }
+
+  @keyframes logo-marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (max-width: 749px) {
+    .custom-logo-strip__bar {
+      min-height: 56px;
+      padding: 12px 24px;
+    }
+
+    .custom-logo-strip__bar p {
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    .custom-logo-strip__logo {
+      margin-right: 12px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:general.custom_logo_strip",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "t:labels.text",
+      "default": "Chosen by 2000+ design professionals, from hospitality groups to independent studios."
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "t:labels.marquee_speed",
+      "min": 10,
+      "max": 80,
+      "step": 2,
+      "unit": "s",
+      "default": 30
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "t:general.logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:labels.image"
+        },
+        {
+          "type": "checkbox",
+          "id": "faded",
+          "label": "t:labels.faded",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:general.custom_logo_strip",
+      "blocks": [
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" }
+      ]
+    }
+  ]
+}
+{% endschema %}

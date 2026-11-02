@@ -1,0 +1,182 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "hello-world",
+      "disabled": true,
+      "settings": {}
+    },
+    "custom_hero_HtEfrg": {
+      "type": "custom-hero",
+      "blocks": {
+        "trust_item_AbrWLJ": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "box",
+            "text": "No minimum order"
+          }
+        },
+        "trust_item_Xd8DyH": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "truck",
+            "text": "Free shipping"
+          }
+        },
+        "trust_item_HCB3MD": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "clock",
+            "text": "Approved within 3 business days"
+          }
+        }
+      },
+      "block_order": [
+        "trust_item_AbrWLJ",
+        "trust_item_Xd8DyH",
+        "trust_item_HCB3MD"
+      ],
+      "name": "t:general.custom_hero",
+      "settings": {
+        "image": "shopify://shop_images/oz40.png",
+        "overlay_opacity": 55,
+        "heading": "The Trade Program",
+        "description": "Furniture, lighting and hardware at exclusive pricing, with a dedicated contact from quote to delivery. Built for interior designers, architects and design professionals.",
+        "button_label": "Apply for Trade Pricing",
+        "button_link": "",
+        "min_height": 776,
+        "min_height_mobile": 480
+      }
+    },
+    "custom_logo_strip_7QibRz": {
+      "type": "custom-logo-strip",
+      "blocks": {
+        "logo_T7ACzt": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/6cdceeb3baf65f1abcaba2cc9da5dcbac1c22379.png",
+            "logo_style": "opacity: 1"
+          }
+        },
+        "logo_NFMh8q": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/a73fe549873e719b546a0edfb1b7f5f44b16bb74.png",
+            "logo_style": "opacity: 1"
+          }
+        },
+        "logo_NrptYr": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/81f2e23cf329c7ff6992f0bc170322cdbcda100c.png",
+            "logo_style": "opacity: 1"
+          }
+        },
+        "logo_mwLbEm": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/6cdceeb3baf65f1abcaba2cc9da5dcbac1c22379.png",
+            "logo_style": "opacity: 1"
+          }
+        },
+        "logo_bnmT4U": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/a73fe549873e719b546a0edfb1b7f5f44b16bb74.png",
+            "logo_style": "opacity: 1"
+          }
+        },
+        "logo_NEzQL8": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/81f2e23cf329c7ff6992f0bc170322cdbcda100c.png",
+            "logo_style": "opacity: 1"
+          }
+        }
+      },
+      "block_order": [
+        "logo_T7ACzt",
+        "logo_NFMh8q",
+        "logo_NrptYr",
+        "logo_mwLbEm",
+        "logo_bnmT4U",
+        "logo_NEzQL8"
+      ],
+      "name": "t:general.custom_logo_strip",
+      "settings": {
+        "text": "Chosen by 2000+ design professionals, from hospitality groups to independent studios.",
+        "speed": 30
+      }
+    },
+    "custom_personas_z3xqJy": {
+      "type": "custom-personas",
+      "blocks": {
+        "persona_6N8jHT": {
+          "type": "persona",
+          "settings": {
+            "image": "shopify://shop_images/f9d937f11c996f8babe3dd7f1be90258c86caa81.png",
+            "title": "Interior Designers",
+            "text": "Comprehensive trade discounts with zero minimums on bespoke furniture.",
+            "link_label": "Apply",
+            "link": ""
+          }
+        },
+        "persona_kLYREL": {
+          "type": "persona",
+          "settings": {
+            "image": "shopify://shop_images/5052a03b7e6aa7dcb2b426dff2aaa99dddd4f2b4.png",
+            "title": "Architects & Developers",
+            "text": "Sourcing files, certified hardware and volume support for contract specs.",
+            "link_label": "Apply",
+            "link": ""
+          }
+        },
+        "persona_NVR7VU": {
+          "type": "persona",
+          "settings": {
+            "image": "shopify://shop_images/3580689a4ff08a4b478d1fed07cdcc714ffd339e.png",
+            "title": "Retailers & Showrooms",
+            "text": "Curation catalogs and priority manufacturing slots for showroom floor partners.",
+            "link_label": "Apply",
+            "link": ""
+          }
+        },
+        "persona_fakxk3": {
+          "type": "persona",
+          "settings": {
+            "image": "shopify://shop_images/67480b61dea1e2dcbb6df7be495082a5b1538593.png",
+            "title": "Hospitality & Commercial",
+            "text": "Highly durable materials engineered for scale, hotel fitouts and restaurants.",
+            "link_label": "Apply",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "persona_6N8jHT",
+        "persona_kLYREL",
+        "persona_NVR7VU",
+        "persona_fakxk3"
+      ],
+      "name": "t:general.custom_personas",
+      "settings": {
+        "heading": "Who it's for",
+        "margin_top": 120
+      }
+    }
+  },
+  "order": [
+    "main",
+    "custom_hero_HtEfrg",
+    "custom_logo_strip_7QibRz",
+    "custom_personas_z3xqJy"
+  ]
+}

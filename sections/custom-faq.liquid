@@ -1,0 +1,225 @@
+<div class="custom-faq full-width">
+  <div class="custom-faq__inner">
+    <div class="custom-faq__intro">
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.description }}</p>
+    </div>
+
+    <div class="custom-faq__list">
+      {% for block in section.blocks %}
+        <details class="custom-faq__item" {{ block.shopify_attributes }}>
+          <summary>{{ block.settings.question }}</summary>
+          {% if block.settings.answer != blank %}
+            <div class="custom-faq__answer">{{ block.settings.answer }}</div>
+          {% endif %}
+        </details>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .custom-faq {
+    padding: 80px;
+    background: #f1f1f1;
+    color: #1a1a1a;
+    font-family: var(--font-primary--family);
+  }
+
+  .custom-faq__inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 80px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .custom-faq__intro {
+    max-width: 534px;
+    padding-top: 16px;
+  }
+
+  .custom-faq__intro h2 {
+    margin: 0 0 16px;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: -0.8px;
+  }
+
+  .custom-faq__intro p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.8;
+  }
+
+  .custom-faq__list {
+    width: 672px;
+    flex-shrink: 0;
+  }
+
+  .custom-faq__item {
+    margin-bottom: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid #1a1a1a;
+  }
+
+  .custom-faq__item summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    min-height: 42px;
+    font-size: 24px;
+    list-style: none;
+    cursor: pointer;
+  }
+
+  .custom-faq__item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .custom-faq__item summary::after {
+    content: '+';
+    font-size: 40px;
+    font-weight: 300;
+  }
+
+  .custom-faq__item[open] summary::after {
+    content: '\2212';
+  }
+
+  .custom-faq__answer {
+    padding: 30px 0 16px;
+    font-size: 18px;
+    line-height: 1.3;
+  }
+
+  .custom-faq__answer p {
+    margin: 0 0 12px;
+  }
+
+  @media (max-width: 989px) {
+    .custom-faq {
+      padding: 64px 40px;
+    }
+
+    .custom-faq__inner {
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .custom-faq__intro,
+    .custom-faq__list {
+      width: 100%;
+      max-width: none;
+    }
+  }
+
+  @media (max-width: 749px) {
+    .custom-faq {
+      padding: 48px 24px;
+      background: #ebebeb;
+      border-top: 1px solid #e5e7eb;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .custom-faq__inner {
+      gap: 28px;
+    }
+
+    .custom-faq__intro {
+      padding-top: 0;
+    }
+
+    .custom-faq__intro h2 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 28px;
+      letter-spacing: 0;
+    }
+
+    .custom-faq__intro p {
+      display: none;
+    }
+
+    .custom-faq__item {
+      margin: 0;
+      padding: 16px 0;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 0;
+    }
+
+    .custom-faq__item summary {
+      gap: 12px;
+      min-height: 26px;
+      font-size: 13px;
+    }
+
+    .custom-faq__item summary::after {
+      font-size: 22px;
+    }
+
+    .custom-faq__answer {
+      padding: 12px 0 0;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:general.custom_faq",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:labels.heading",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "t:labels.description",
+      "default": "Register to join over 2,000 design professionals already on the program. Approved accounts gain wholesale platform access in under three business days."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "t:general.question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "t:labels.question",
+          "default": "How do the membership tiers work?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "t:labels.answer",
+          "default": "<p>Your discount is set by your spend over a rolling 12 months and increases automatically — no need to reapply or negotiate.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:general.custom_faq",
+      "blocks": [
+        { "type": "question", "settings": { "question": "Do I need to provide business documents to apply?", "answer": "" } },
+        { "type": "question", "settings": { "question": "Is there a minimum order value?", "answer": "" } },
+        { "type": "question", "settings": { "question": "How do the membership tiers work?" } },
+        { "type": "question", "settings": { "question": "How long does approval take?", "answer": "" } },
+        { "type": "question", "settings": { "question": "Can I get samples or spec sheets?", "answer": "" } },
+        { "type": "question", "settings": { "question": "What's your returns policy for trade orders?", "answer": "" } },
+        { "type": "question", "settings": { "question": "Do you ship outside the UK?", "answer": "" } },
+        { "type": "question", "settings": { "question": "Can I use trade pricing for personal projects?", "answer": "" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,509 @@
+{%- assign menu = section.settings.menu -%}
+
+{%- if section.settings.sticky -%}
+  <style>
+    #shopify-section-{{ section.id }} {
+      position: sticky;
+      top: {% if section.settings.show_announcement %}-40px{% else %}0{% endif %};
+      z-index: 20;
+    }
+  </style>
+{%- endif -%}
+
+<div
+  class="custom-nav full-width"
+  style="
+    --announcement-bg: {{ section.settings.announcement_background }};
+    --announcement-color: {{ section.settings.announcement_text }};
+    --header-bg: {{ section.settings.header_background }};
+    --header-color: {{ section.settings.header_text }};
+    --logo-width: {{ section.settings.logo_width }}px;
+  "
+>
+  {% if section.settings.show_announcement %}
+    <div class="custom-nav__announcement">
+      <a href="tel:{{ section.settings.announcement_phone }}" class="custom-nav__phone">
+        {{- section.settings.announcement_phone -}}
+      </a>
+
+      <div class="custom-nav__message">
+        <p {% if section.settings.announcement_scroll_mobile %}class="scroll-on-mobile"{% endif %}>
+          {% if section.settings.announcement_link != blank %}
+            <a href="{{ section.settings.announcement_link }}">{{ section.settings.announcement_message }}</a>
+          {% else %}
+            {{ section.settings.announcement_message }}
+          {% endif %}
+        </p>
+      </div>
+
+      <a href="mailto:{{ section.settings.announcement_email }}" class="custom-nav__email">
+        {{- section.settings.announcement_email -}}
+      </a>
+    </div>
+  {% endif %}
+
+  <header class="custom-nav__bar">
+    <details class="custom-nav__drawer">
+      <summary class="custom-nav__icon" aria-label="{{ 'custom_nav.menu' | t }}">
+        <span class="icon-open">{{ 'icon-menu.svg' | inline_asset_content }}</span>
+        <span class="icon-close">{{ 'icon-close.svg' | inline_asset_content }}</span>
+      </summary>
+
+      <nav class="custom-nav__drawer-menu">
+        <ul>
+          {% for link in menu.links %}
+            <li>
+              {% if link.links.size > 0 %}
+                <details>
+                  <summary>
+                    {{ link.title }}
+                    {{ 'icon-plus.svg' | inline_asset_content }}
+                  </summary>
+                  <ul class="custom-nav__drawer-submenu">
+                    <li><a href="{{ link.url }}">{{ 'custom_nav.view_all' | t }}</a></li>
+                    {% for child in link.links %}
+                      <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </details>
+              {% else %}
+                <a href="{{ link.url }}">{{ link.title }}</a>
+              {% endif %}
+            </li>
+          {% endfor %}
+
+          {% if section.settings.show_account and shop.customer_accounts_enabled %}
+            <li><a href="{{ routes.account_url }}">{{ 'custom_nav.account' | t }}</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </details>
+
+    <a href="{{ routes.root_url }}" class="custom-nav__logo">
+      {% if section.settings.logo %}
+        {{ section.settings.logo | image_url: width: 480 | image_tag: alt: shop.name }}
+      {% else %}
+        {{ 'ozarke-logo.svg' | inline_asset_content }}
+      {% endif %}
+    </a>
+
+    <div class="custom-nav__right">
+      <nav class="custom-nav__menu">
+        <ul>
+          {% for link in menu.links %}
+            <li class="custom-nav__item">
+              <a href="{{ link.url }}">
+                {{ link.title }}
+                {% if link.links.size > 0 %}
+                  {{ 'icon-plus.svg' | inline_asset_content }}
+                {% endif %}
+              </a>
+
+              {% if link.links.size > 0 %}
+                <ul class="custom-nav__dropdown">
+                  {% for child in link.links %}
+                    <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </li>
+          {% endfor %}
+
+          {% if section.settings.show_account and shop.customer_accounts_enabled %}
+            <li class="custom-nav__item">
+              <a href="{{ routes.account_url }}">{{ 'custom_nav.account' | t }}</a>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+
+      <div class="custom-nav__icons">
+        <a href="{{ routes.search_url }}" class="custom-nav__icon" aria-label="{{ 'search.title' | t }}">
+          {{ 'icon-search.svg' | inline_asset_content }}
+        </a>
+        <a href="{{ routes.cart_url }}" class="custom-nav__icon custom-nav__cart" aria-label="{{ 'cart.title' | t }}">
+          {{ 'icon-bag.svg' | inline_asset_content }}
+          <span>{{ cart.item_count }}</span>
+        </a>
+      </div>
+    </div>
+  </header>
+</div>
+
+{% stylesheet %}
+  .custom-nav {
+    font-family: var(--font-primary--family);
+    font-size: 14px;
+  }
+
+  .custom-nav a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .custom-nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .custom-nav summary {
+    list-style: none;
+    cursor: pointer;
+  }
+
+  .custom-nav summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* Announcement bar */
+  .custom-nav__announcement {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    height: 40px;
+    padding: 0 40px;
+    background: var(--announcement-bg);
+    color: var(--announcement-color);
+    letter-spacing: 0.02em;
+  }
+
+  .custom-nav__message {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .custom-nav__announcement a:hover {
+    text-decoration: underline;
+  }
+
+  /* Header bar */
+  .custom-nav__bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    padding: 0 40px;
+    background: var(--header-bg);
+    color: var(--header-color);
+  }
+
+  .custom-nav__logo {
+    width: var(--logo-width);
+  }
+
+  .custom-nav__logo svg,
+  .custom-nav__logo img {
+    width: 100%;
+    height: auto;
+  }
+
+  .custom-nav__right {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 672px;
+    height: 100%;
+  }
+
+  .custom-nav__menu,
+  .custom-nav__menu > ul {
+    height: 100%;
+  }
+
+  .custom-nav__menu > ul {
+    display: flex;
+    gap: 110px;
+  }
+
+  .custom-nav__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .custom-nav__item > a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .custom-nav__item > a:hover {
+    text-decoration: underline;
+  }
+
+  .custom-nav__item svg {
+    width: 9px;
+  }
+
+  .custom-nav__dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: -20px;
+    min-width: 200px;
+    padding: 16px 20px;
+    background: var(--header-bg);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+  }
+
+  .custom-nav__item:hover .custom-nav__dropdown {
+    display: block;
+  }
+
+  .custom-nav__dropdown a {
+    display: block;
+    line-height: 26px;
+  }
+
+  .custom-nav__dropdown a:hover {
+    text-decoration: underline;
+  }
+
+  .custom-nav__icons {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .custom-nav__icon {
+    position: relative;
+    display: flex;
+    color: inherit;
+  }
+
+  .custom-nav__icon svg {
+    width: auto;
+    height: 24px;
+  }
+
+  .custom-nav__cart span {
+    position: absolute;
+    top: 9px;
+    left: 0;
+    width: 100%;
+    font-size: 10px;
+    text-align: center;
+  }
+
+  /* Mobile menu */
+  .custom-nav__drawer {
+    display: none;
+  }
+
+  .custom-nav__drawer .icon-close,
+  .custom-nav__drawer[open] .icon-open {
+    display: none;
+  }
+
+  .custom-nav__drawer[open] .icon-close {
+    display: block;
+  }
+
+  .custom-nav__drawer-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    padding: 8px 16px;
+    overflow-y: auto;
+    background: var(--header-bg);
+    border-top: 1px solid #e2e2e2;
+  }
+
+  .custom-nav__drawer-menu > ul > li {
+    border-bottom: 1px solid #e2e2e2;
+  }
+
+  .custom-nav__drawer-menu > ul > li > a,
+  .custom-nav__drawer-menu summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+    font-size: 16px;
+  }
+
+  .custom-nav__drawer-menu summary svg {
+    width: 9px;
+  }
+
+  .custom-nav .custom-nav__drawer-submenu {
+    padding: 0 0 18px 12px;
+  }
+
+  .custom-nav__drawer-submenu a {
+    display: block;
+    line-height: 30px;
+  }
+
+  @media (max-width: 989px) {
+    .custom-nav__announcement {
+      justify-content: center;
+      padding: 0 16px;
+    }
+
+    .custom-nav__phone,
+    .custom-nav__email,
+    .custom-nav__menu {
+      display: none;
+    }
+
+    .custom-nav__message .scroll-on-mobile {
+      display: inline-block;
+      padding-left: 100%;
+      animation: nav-marquee 14s linear infinite;
+    }
+
+    .custom-nav__bar {
+      height: 72px;
+      padding: 0 16px;
+    }
+
+    .custom-nav__drawer {
+      display: block;
+      width: 80px;
+    }
+
+    .custom-nav__logo {
+      width: calc(var(--logo-width) * 0.75);
+    }
+
+    .custom-nav__right {
+      width: 80px;
+      justify-content: flex-end;
+    }
+
+    .custom-nav__icons {
+      gap: 28px;
+    }
+  }
+
+  @keyframes nav-marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:general.custom_nav",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:general.announcement_bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "t:labels.show_announcement",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "announcement_phone",
+      "label": "t:labels.phone",
+      "default": "(800) 604-7271"
+    },
+    {
+      "type": "text",
+      "id": "announcement_message",
+      "label": "t:labels.message",
+      "default": "Labor Day Sale - Get 20% OFF Your Order | Use Code: LABOR20"
+    },
+    {
+      "type": "url",
+      "id": "announcement_link",
+      "label": "t:labels.message_link"
+    },
+    {
+      "type": "text",
+      "id": "announcement_email",
+      "label": "t:labels.email",
+      "default": "info@ozarke.com"
+    },
+    {
+      "type": "checkbox",
+      "id": "announcement_scroll_mobile",
+      "label": "t:labels.scroll_on_mobile",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "announcement_background",
+      "label": "t:labels.announcement_background",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "announcement_text",
+      "label": "t:labels.announcement_text",
+      "default": "#efefef"
+    },
+    {
+      "type": "header",
+      "content": "t:general.navigation"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "t:labels.logo"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "t:labels.logo_width",
+      "min": 80,
+      "max": 240,
+      "step": 2,
+      "unit": "px",
+      "default": 136
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "t:labels.menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_account",
+      "label": "t:labels.show_account",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky",
+      "label": "t:labels.sticky_header",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "header_background",
+      "label": "t:labels.header_background",
+      "default": "#f1f1f1"
+    },
+    {
+      "type": "color",
+      "id": "header_text",
+      "label": "t:labels.header_text",
+      "default": "#1a1a1a"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:general.custom_nav"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,104 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "404": {
+    "title": "404",
+    "not_found": "Page not found.",
+    "back_to_shopping": "Back to shopping"
+  },
+  "blog": {
+    "article_comments": "Comments",
+    "article_metadata_html": "{{ date }} by {{ author }}",
+    "comment_form_body": "Comment",
+    "comment_form_email": "Email",
+    "comment_form_name": "Name",
+    "comment_form_submit": "Post",
+    "comment_form_title": "Add a comment"
+  },
+  "cart": {
+    "checkout": "Checkout",
+    "title": "Cart",
+    "update": "Update",
+    "remove": "Remove"
+  },
+  "custom_nav": {
+    "menu": "Menu",
+    "account": "Account",
+    "view_all": "View all"
+  },
+  "customers": {
+    "login": {
+      "email": "Email",
+      "password": "Password",
+      "submit": "Sign in",
+      "title": "Login"
+    }
+  },
+  "collections": {
+    "title": "Collections"
+  },
+  "gift_card": {
+    "add_to_apple_wallet": "Add to Apple Wallet",
+    "card": "Gift card",
+    "expired": "This gift card has expired",
+    "expires_on": "Expires on {{ expires_on }}",
+    "use_at_checkout": "Use this gift card at checkout"
+  },
+  "password": {
+    "title": "This shop is private",
+    "password": "Password",
+    "enter": "Enter"
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Search articles, pages, or products",
+    "submit": "Search",
+    "no_results_html": "No results found for {{ terms }}",
+    "results_for_html": "{{ count }} results found for {{ terms }}"
+  },
+  "custom_form": {
+    "form_name": "Trade application",
+    "tab_1": "Contact Details",
+    "tab_2": "Professional Info",
+    "tab_3": "Submit",
+    "tab_short_1": "Contact",
+    "tab_short_2": "Professional",
+    "tab_short_3": "Submit",
+    "first_name": "First Name *",
+    "first_name_placeholder": "e.g. Sarah",
+    "last_name": "Last Name *",
+    "last_name_placeholder": "e.g. Jenkins",
+    "email": "Business Email *",
+    "email_placeholder": "sarah@studiojenkins.co.uk",
+    "phone": "Phone Number *",
+    "phone_placeholder": "+44 7911 123456",
+    "business_name": "Business Name *",
+    "business_name_placeholder": "e.g. Studio Jenkins",
+    "business_type": "Business Type *",
+    "business_type_placeholder": "Select your business type",
+    "source": "How Did You Hear About Us *",
+    "source_placeholder": "e.g. Recommended by a colleague",
+    "step_of": "Step {{ current }} of {{ total }}",
+    "back": "Back",
+    "continue": "Continue"
+  },
+  "custom_footer": {
+    "email": "Email",
+    "sign_up": "Sign up",
+    "subscribed": "Thanks for signing up.",
+    "app_store_small": "Download on the",
+    "app_store": "App Store",
+    "google_play_small": "Get it on",
+    "google_play": "Google Play"
+  },
+  "custom_slideshow": {
+    "go_to_slide": "Go to slide {{ index }}"
+  }
+}

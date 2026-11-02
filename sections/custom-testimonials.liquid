@@ -1,0 +1,255 @@
+<div class="custom-testimonials full-width">
+  <div class="custom-testimonials__inner">
+    <div class="custom-testimonials__header">
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.description }}</p>
+    </div>
+
+    <div class="custom-testimonials__grid">
+      {% for block in section.blocks %}
+        <div class="custom-testimonials__card" {{ block.shopify_attributes }}>
+          <span class="custom-testimonials__quote-mark">&ldquo;</span>
+          <p class="custom-testimonials__quote">{{ block.settings.quote }}</p>
+          <div class="custom-testimonials__author">
+            <p class="custom-testimonials__name">{{ block.settings.name }}</p>
+            <p class="custom-testimonials__company">{{ block.settings.company }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .custom-testimonials {
+    padding: 100px 120px;
+    background: #f1f1f1;
+    color: #1a1a1a;
+    font-family: var(--font-primary--family);
+  }
+
+  .custom-testimonials__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .custom-testimonials__header {
+    max-width: 900px;
+    margin: 0 auto 64px;
+    text-align: center;
+  }
+
+  .custom-testimonials__header h2 {
+    margin: 0 0 12px;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 46px;
+  }
+
+  .custom-testimonials__header p {
+    max-width: 680px;
+    margin: 0 auto;
+    color: #5d5d5d;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .custom-testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 331px);
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .custom-testimonials__card {
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    background: #fff;
+  }
+
+  .custom-testimonials__quote-mark {
+    height: 24px;
+    color: #3d12f5;
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 70px;
+    line-height: 28px;
+  }
+
+  .custom-testimonials__quote {
+    flex: 1;
+    min-height: 143px;
+    margin: 24px 0;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .custom-testimonials__author {
+    padding-top: 16px;
+    border-top: 1px solid #c0c0c0;
+    color: rgba(26, 26, 26, 0.8);
+  }
+
+  .custom-testimonials__author p {
+    margin: 0;
+  }
+
+  .custom-testimonials__name {
+    font-size: 18px;
+    line-height: 27px;
+  }
+
+  .custom-testimonials__author .custom-testimonials__company {
+    margin-top: 2px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  @media (max-width: 989px) {
+    .custom-testimonials {
+      padding: 80px 40px;
+    }
+
+    .custom-testimonials__grid {
+      grid-template-columns: 1fr;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .custom-testimonials__quote {
+      min-height: 0;
+    }
+  }
+
+  @media (max-width: 749px) {
+    .custom-testimonials {
+      padding: 48px 24px;
+      background: #e9e9e9;
+    }
+
+    .custom-testimonials__header {
+      margin-bottom: 32px;
+      text-align: left;
+    }
+
+    .custom-testimonials__header h2 {
+      margin-bottom: 8px;
+      font-size: 28px;
+      line-height: 28px;
+    }
+
+    .custom-testimonials__header p {
+      margin: 0;
+    }
+
+    .custom-testimonials__card {
+      padding: 24px;
+    }
+
+    .custom-testimonials__quote-mark {
+      height: 19px;
+      font-family: Lora, Georgia, serif;
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 19px;
+    }
+
+    .custom-testimonials__quote {
+      margin: 16px 0;
+      line-height: 1.5;
+    }
+
+    .custom-testimonials__author {
+      padding-top: 12px;
+    }
+
+    .custom-testimonials__name {
+      color: #1a1a1a;
+      font-size: 14px;
+      line-height: 14px;
+    }
+
+    .custom-testimonials__company {
+      color: #5d5d5d;
+      line-height: 12px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:general.custom_testimonials",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:labels.heading",
+      "default": "What Our Partners Say"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "t:labels.description",
+      "default": "Over 1,700 design studios, developers, and commercial entities trust Ozarké for their projects."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "t:general.testimonial",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "t:labels.quote",
+          "default": "Ozarke's trade pricing and turnaround have made them our first call for every project."
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "t:labels.name",
+          "default": "Alistair Vance"
+        },
+        {
+          "type": "text",
+          "id": "company",
+          "label": "t:labels.company",
+          "default": "Vance & Partners · London"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "t:general.custom_testimonials",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Ozarke's trade pricing and turnaround have made them our first call for every project.",
+            "name": "Alistair Vance",
+            "company": "Vance & Partners · London"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The team treats every order like it's the only one they're working on. That's rare.",
+            "name": "Elena Rostova",
+            "company": "Studio Rostova · Edinburgh"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Well-made pieces, and someone who actually picks up the phone.",
+            "name": "Jonathan Miller",
+            "company": "Miller & Co. · Bath"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
