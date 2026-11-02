@@ -63,42 +63,42 @@
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/6cdceeb3baf65f1abcaba2cc9da5dcbac1c22379.png",
-            "logo_style": "opacity: 1"
+            "faded": false
           }
         },
         "logo_NFMh8q": {
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/a73fe549873e719b546a0edfb1b7f5f44b16bb74.png",
-            "logo_style": "opacity: 1"
+            "faded": false
           }
         },
         "logo_NrptYr": {
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/81f2e23cf329c7ff6992f0bc170322cdbcda100c.png",
-            "logo_style": "opacity: 1"
+            "faded": false
           }
         },
         "logo_mwLbEm": {
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/6cdceeb3baf65f1abcaba2cc9da5dcbac1c22379.png",
-            "logo_style": "opacity: 1"
+            "faded": false
           }
         },
         "logo_bnmT4U": {
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/a73fe549873e719b546a0edfb1b7f5f44b16bb74.png",
-            "logo_style": "opacity: 1"
+            "faded": false
           }
         },
         "logo_NEzQL8": {
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/81f2e23cf329c7ff6992f0bc170322cdbcda100c.png",
-            "logo_style": "opacity: 1"
+            "faded": false
           }
         }
       },
@@ -168,8 +168,314 @@
       ],
       "name": "t:general.custom_personas",
       "settings": {
-        "heading": "Who it's for",
-        "margin_top": 120
+        "heading": "Who it's for"
+      }
+    },
+    "custom_features_DEqxmU": {
+      "type": "custom-features",
+      "blocks": {
+        "feature_FKRmDf": {
+          "type": "feature",
+          "settings": {
+            "title": "A wide lighting assortment",
+            "text": "Source statement pieces, architectural lighting, decorative fixtures, and complementary products within one destination."
+          }
+        },
+        "feature_bYQi9r": {
+          "type": "feature",
+          "settings": {
+            "title": "Solutions across project types",
+            "text": "Lighting for residential, hospitality, commercial, and development projects."
+          }
+        },
+        "feature_BfbwUr": {
+          "type": "feature",
+          "settings": {
+            "title": "Trade support when you need it",
+            "text": "Get help with product questions, larger orders, availability, and purchasing."
+          }
+        },
+        "feature_fXj6tW": {
+          "type": "feature",
+          "settings": {
+            "title": "Project-friendly purchasing",
+            "text": "Trade pricing, free shipping, and eligible tax exemptions help simplify project budgets."
+          }
+        },
+        "feature_c6zQMF": {
+          "type": "feature",
+          "settings": {
+            "title": "One account. Ongoing access.",
+            "text": "Once approved, professionals can return to Ozarké for future projects without reapplying."
+          }
+        }
+      },
+      "block_order": [
+        "feature_FKRmDf",
+        "feature_bYQi9r",
+        "feature_BfbwUr",
+        "feature_fXj6tW",
+        "feature_c6zQMF"
+      ],
+      "name": "t:general.custom_features",
+      "settings": {
+        "heading": "Make specifying easier",
+        "image": "shopify://shop_images/Rectangle.png",
+        "image_position": "right"
+      }
+    },
+    "custom_tiers_cj8MWg": {
+      "type": "custom-tiers",
+      "blocks": {
+        "tier_TRGAXD": {
+          "type": "tier",
+          "settings": {
+            "name": "Bronze",
+            "discount": "15% OFF",
+            "spend": "Annual spend under £2,000",
+            "text": "Trade pricing across the full catalogue. Free shipping. Early access to new arrivals.",
+            "highlight": false,
+            "tag": "Premium"
+          }
+        },
+        "tier_FLr9DW": {
+          "type": "tier",
+          "settings": {
+            "name": "Silver",
+            "discount": "25% OFF",
+            "spend": "Annual spend £2,000-£5,000",
+            "text": "Everything in Bronze, plus priority processing and discounted physical samples for clients.",
+            "highlight": false,
+            "tag": "Premium"
+          }
+        },
+        "tier_ifQLaK": {
+          "type": "tier",
+          "settings": {
+            "name": "Gold",
+            "discount": "35% OFF",
+            "spend": "Annual spend over £5,000",
+            "text": "Everything in Silver, plus a named account manager, early access to limited editions, and concierge ordering support.",
+            "highlight": true,
+            "tag": "Premium"
+          }
+        }
+      },
+      "block_order": [
+        "tier_TRGAXD",
+        "tier_FLr9DW",
+        "tier_ifQLaK"
+      ],
+      "name": "t:general.custom_tiers",
+      "settings": {
+        "heading": "Designed to Support Your Growth",
+        "description": "Your trade benefits automatically expand as your annual portfolio spend increases. Transparent scaling, zero negotiations.",
+        "button_label": "Apply for Trade Pricing",
+        "button_link": ""
+      }
+    },
+    "custom_slideshow_KeKQrC": {
+      "type": "custom-slideshow",
+      "blocks": {
+        "slide_YrDzgA": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Image_Zigzag_Flexible_Tambour_Panels.png",
+            "text": "Considered pieces, built for projects that need to last."
+          }
+        },
+        "slide_xEWHPH": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/oz40.png",
+            "text": "Considered pieces, built for projects that need to last."
+          }
+        },
+        "slide_nt8aqE": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/5052a03b7e6aa7dcb2b426dff2aaa99dddd4f2b4.png",
+            "text": "Considered pieces, built for projects that need to last."
+          }
+        },
+        "slide_eBCVNH": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/3580689a4ff08a4b478d1fed07cdcc714ffd339e.png",
+            "text": "Considered pieces, built for projects that need to last."
+          }
+        },
+        "slide_RLNBiL": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle.png",
+            "text": "Considered pieces, built for projects that need to last."
+          }
+        }
+      },
+      "block_order": [
+        "slide_YrDzgA",
+        "slide_xEWHPH",
+        "slide_nt8aqE",
+        "slide_eBCVNH",
+        "slide_RLNBiL"
+      ],
+      "name": "t:general.custom_slideshow",
+      "settings": {
+        "autoplay": true,
+        "autoplay_speed": 5,
+        "overlay_opacity": 30,
+        "overlay_opacity_mobile": 35
+      }
+    },
+    "custom_benefits_k9rwUc": {
+      "type": "custom-benefits",
+      "blocks": {
+        "benefit_6K4mqr": {
+          "type": "benefit",
+          "settings": {
+            "icon": "tag",
+            "title": "Exclusive trade pricing",
+            "text": "Up to 35% discount based on tier structure, applied directly at checkout online or via quote."
+          }
+        },
+        "benefit_ntcc7n": {
+          "type": "benefit",
+          "settings": {
+            "icon": "user",
+            "title": "A named contact",
+            "text": "Personalized service with direct phone and email access to resolve custom specifications."
+          }
+        },
+        "benefit_KhJfF9": {
+          "type": "benefit",
+          "settings": {
+            "icon": "truck",
+            "title": "Free shipping",
+            "text": "No delivery charges on standard orders. Coordinated shipping of bulk orders."
+          }
+        },
+        "benefit_dXX9GH": {
+          "type": "benefit",
+          "settings": {
+            "icon": "clock",
+            "title": "Priority processing",
+            "text": "Your orders enter production and shipping queue with elevated priority to meet install targets."
+          }
+        },
+        "benefit_YFKngE": {
+          "type": "benefit",
+          "settings": {
+            "icon": "star",
+            "title": "Early access",
+            "text": "Preview and order from new seasonal collections before they launch to the general public."
+          }
+        },
+        "benefit_iXVjXV": {
+          "type": "benefit",
+          "settings": {
+            "icon": "percent",
+            "title": "Zero sales tax",
+            "text": "Seamless VAT/sales tax exemption integration for eligible companies and physical stores."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_6K4mqr",
+        "benefit_ntcc7n",
+        "benefit_KhJfF9",
+        "benefit_dXX9GH",
+        "benefit_YFKngE",
+        "benefit_iXVjXV"
+      ],
+      "name": "t:general.custom_benefits",
+      "settings": {
+        "heading": "More Than Just Pricing",
+        "description": "We understand your timelines and client pressures. Our benefits ensure you have a seamless experience from planning to installation.",
+        "button_label": "Apply for Trade Pricing",
+        "button_link": ""
+      }
+    },
+    "custom_steps_BGHqWX": {
+      "type": "custom-steps",
+      "blocks": {
+        "step_EgQELJ": {
+          "type": "step",
+          "settings": {
+            "title": "Apply",
+            "text": "Tell us about your business. Takes under two minutes, no documents required*."
+          }
+        },
+        "step_8WJwaN": {
+          "type": "step",
+          "settings": {
+            "title": "Reviewed",
+            "text": "A member of our trade team reviews your application personally."
+          }
+        },
+        "step_DFkjWT": {
+          "type": "step",
+          "settings": {
+            "title": "Approved",
+            "text": "You'll hear back within 3 business days*, with your account and pricing ready to go."
+          }
+        },
+        "step_AdbnBi": {
+          "type": "step",
+          "settings": {
+            "title": "Order",
+            "text": "Order through your account, or work directly with your named contact."
+          }
+        }
+      },
+      "block_order": [
+        "step_EgQELJ",
+        "step_8WJwaN",
+        "step_DFkjWT",
+        "step_AdbnBi"
+      ],
+      "name": "t:general.custom_steps",
+      "settings": {
+        "heading": "Get Started in Four Simple Steps"
+      }
+    },
+    "custom_testimonials_PVr4Jt": {
+      "type": "custom-testimonials",
+      "blocks": {
+        "testimonial_JidtRa": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Ozarke's trade pricing and turnaround have made them our first call for every project.",
+            "name": "Alistair Vance",
+            "company": "Vance & Partners · London"
+          }
+        },
+        "testimonial_pyN6TD": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The team treats every order like it's the only one they're working on. That's rare.",
+            "name": "Elena Rostova",
+            "company": "Studio Rostova · Edinburgh"
+          }
+        },
+        "testimonial_bQ63WF": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Well-made pieces, and someone who actually picks up the phone.",
+            "name": "Jonathan Miller",
+            "company": "Miller & Co. · Bath"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_JidtRa",
+        "testimonial_pyN6TD",
+        "testimonial_bQ63WF"
+      ],
+      "name": "t:general.custom_testimonials",
+      "settings": {
+        "heading": "What Our Partners Say",
+        "description": "Over 1,700 design studios, developers, and commercial entities trust Ozarké for their projects."
       }
     }
   },
@@ -177,6 +483,12 @@
     "main",
     "custom_hero_HtEfrg",
     "custom_logo_strip_7QibRz",
-    "custom_personas_z3xqJy"
+    "custom_personas_z3xqJy",
+    "custom_features_DEqxmU",
+    "custom_tiers_cj8MWg",
+    "custom_slideshow_KeKQrC",
+    "custom_benefits_k9rwUc",
+    "custom_steps_BGHqWX",
+    "custom_testimonials_PVr4Jt"
   ]
 }
